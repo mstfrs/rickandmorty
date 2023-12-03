@@ -1,15 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { ICharacterCard, ICharacters } from "../../types/Type";
 import { useDispatch } from "react-redux";
-import { setSelectedCharacter } from "../../redux/characterSlice";
+import { setCharacter } from "../../redux/characterSlice";
+import { AppDispatch } from "../../redux/store";
 
 export const CharacterCard = ({ character }: ICharacterCard) => {
   const navigate = useNavigate();
-  const dispatch=useDispatch()
+  const dispatch: AppDispatch = useDispatch();
   const handleNavigate = async (character:ICharacters) => {
-    const id=character.id
-    navigate(`/characters/characterdetail/${id}`);
-    dispatch(setSelectedCharacter(character))
+   
+   
+    navigate(`/characters/characterdetail`);
+    dispatch(setCharacter(character))
   };
   return (
     <div

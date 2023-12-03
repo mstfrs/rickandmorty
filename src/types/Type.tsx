@@ -15,8 +15,7 @@ export interface ILocationCard {
 export interface ICharacters {
   id: number;
   name: string;
-  species:string;
-
+  species: string;
   type: string;
   status: string;
   gender: string;
@@ -24,31 +23,48 @@ export interface ICharacters {
   origin: string[];
   location: {
     name: string;
-    url:string;
+    url: string;
   };
-  
-  episode:string[];
-  url:string;
-  created:string;
+
+  episode: string[];
+  url: string;
+  created: string;
 }
 export interface ICharacterCardList {
   allCharacters: ICharacters[];
+  loading: boolean;
+  error: string;
 }
 export interface ICharacterCard {
   character: ICharacters;
-  
 }
-export interface CharacterDetailCardProps {
-  selected: ICharacters;
-  other:ICharacters[];
-  otherCharacters:ICharacters;
-}
+
 export interface CardAvatarProps {
-  
-  otherCharacter:ICharacters;
+  otherCharacter: ICharacters;
 }
 export interface PaginationComponentProps {
   totalItems: number;
   itemsPerPage: number;
   onPageChange: (page: number) => void;
+}
+export interface LoadingComponentProps {
+  isLoading: boolean;
+}
+export interface ButtonComponentProps {
+  text: string;
+}
+export interface Characters {
+  allCharacters: ICharacters[];
+  loading: boolean;
+  error: string;
+  allLocations: ILocations[];
+  filteredCharactersByLocation: ICharacters[];
+  selectedCharacter: ICharacters;
+  selectedLocation: string;
+}
+export interface Locations {  
+  loading: boolean;
+  error: string;
+  allLocations: ILocations[];
+  selectedLocation: string;
 }

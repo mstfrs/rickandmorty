@@ -1,33 +1,38 @@
 import React from "react";
 
-import { CharacterDetailCardProps } from "../../types/Type";
+import {  ICharacters } from "../../types/Type";
 import { CardAvatar } from "../CardAvatar";
 import Paginate from "../Paginate";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
-const CharacterDetailCard: React.FC<CharacterDetailCardProps> = ({
-  selected,
-  other,
+const CharacterDetailCard: React.FC = ({
+ 
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 6;
+  const selected = useSelector((state: RootState) => state.characters.selectedCharacter);
+  const filterdCharacters = useSelector((state: RootState) => state.characters.filteredCharactersByLocation);
+  const otherCharacters = filterdCharacters?.filter((character: ICharacters) => character.id !== selected.id);
+  
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
-  const displayedOthers = other?.slice(startIndex, endIndex);
+  const displayedOthers = otherCharacters?.slice(startIndex, endIndex);
 
   return (
     <div className="antialiased text-gray-900 ">
-      <div className=" min-h-screen p-8 flex flex-col md:flex-row md:items-start items-center justify-around">
-        <div className="bg-white rounded-lg overflow-hidden shadow-2xl xl:w-1/4 lg:w-1/4 md:w-1/3 sm:w-2/3">
+      <div className=" min-h-screen p-4 flex flex-col md:flex-row md:items-start items-center justify-between">
+        <div className="bg-white rounded-lg overflow-hidden shadow-2xl xl:w-1/3 lg:w-1/4 md:w-1/3 sm:w-2/3">
           {/* <div className="h-20 bg-cover bg-center bg-slate-500" ></div> */}
           <img
             className="h-[100%] w-full object-contain object-end"
             src={selected.image}
-            alt="Home in Countryside"
+            alt=""
           />
           <div className="p-6">
             <div className="flex items-baseline justify-between">
@@ -75,14 +80,14 @@ const CharacterDetailCard: React.FC<CharacterDetailCardProps> = ({
             <h3 className="text-2xl font-semibold text-center mb-4">
               Other Characters
             </h3>
-            <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-4">
+            <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-4">
               {displayedOthers.map((item) => (
                 <CardAvatar otherCharacter={item} />
               ))}
             </div>
           </div>
           <Paginate
-          totalItems={other?.length || 0}
+        totalItems={otherCharacters?.length||0}
           itemsPerPage={pageSize}
           onPageChange={handlePageChange}
         />

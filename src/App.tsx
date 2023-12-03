@@ -4,8 +4,11 @@ import AppRouter from './router/AppRouter';
 
 function App() {
   return (
-    <div className="container mx-auto ">
-     <AppRouter/>
+    <div className="h-[100vh] ">
+      <div className='container mx-auto '>
+      <AppRouter/>
+      </div>
+     
     </div>
   );
 }

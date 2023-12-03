@@ -2,9 +2,8 @@ import React from "react";
 import { CardAvatarProps } from "../../types/Type";
 
 export const CardAvatar: React.FC<CardAvatarProps> = ({ otherCharacter }) => {
-  console.log(otherCharacter);
   return (
-    <div className="py-4 px-4 w-full mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+    <div className="py-4 px-4 w-[24rem] h-[10rem] mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
       <img
         className="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0"
         src={otherCharacter.image}
@@ -22,11 +21,11 @@ export const CardAvatar: React.FC<CardAvatarProps> = ({ otherCharacter }) => {
         <div
           className={`${
             otherCharacter.status === "Alive"
-              ? "bg-teal-300"
+              ? "bg-green-500 text-white"
               : otherCharacter.status === "Dead"
               ? "bg-red-500 text-white"
               : "bg-gray-300"
-          } px-4 py-1 text-sm text-center w-24 text-purple-600 font-semibold rounded-full border border-purple-200  hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2`}
+          } px-4 py-1 text-sm text-center w-24  font-semibold rounded-full border border-purple-200  hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2`}
         >
           {otherCharacter.status}
         </div>

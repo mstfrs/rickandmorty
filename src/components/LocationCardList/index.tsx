@@ -1,38 +1,51 @@
 import { Pagination } from "antd";
 import { ILocationCardList } from "../../types/Type";
 import LocationCard from "../LocationCard";
-import {useState} from "react"
-import type { PaginationProps } from 'antd';
+import { useEffect, useState } from "react";
+import type { PaginationProps } from "antd";
 import Paginate from "../Paginate";
+import { AppDispatch, RootState } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
 
-const LocationCardList = ({ allLocations }: ILocationCardList) => {
+import LoadingPage from "../LoadingPage/CardLoading";
+import { getLocations } from "../../redux/locationSlice";
+
+const LocationCardList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 6;
+  const dispatch: AppDispatch = useDispatch();
+  const locations = useSelector((state: RootState) => state.locations);
 
-  const handlePageChange = (page:number) => {
+  useEffect(() => {
+    dispatch(getLocations());
+  }, []);
+
+  const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
-  const displayedLocations = allLocations?.slice(startIndex, endIndex);
+  const displayedLocations = locations.allLocations?.slice(
+    startIndex,
+    endIndex
+  );
 
   return (
     <>
-      
-     
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center  overflow-auto">
-          {displayedLocations?.map((location) => (
-            <LocationCard location={location} key={location.id} />
-          ))}
-        </div>
-       
-          <Paginate totalItems={allLocations?.length || 0}
-          itemsPerPage={pageSize}
-          onPageChange={handlePageChange}
-          />
-        
-     
+      {locations.loading && <LoadingPage />}
+      {locations.error && locations.error}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center  overflow-auto">
+        {displayedLocations.map((location) => (
+          <LocationCard location={location} key={location.id} />
+        ))}
+      </div>
+
+      <Paginate
+        totalItems={locations.allLocations?.length || 0}
+        itemsPerPage={pageSize}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 };

@@ -87,7 +87,7 @@ SOLUTION
 
 ## Links
 <hr>
-<b>Check The Live Website ➡️</b> <a href="[rickandmorty-2sblwy9hp-mstfrs.vercel.app](https://rickandmorty-2sblwy9hp-mstfrs.vercel.app/)"> Live Website </a> 
+<b>Check The Live Website ➡️</b> <a href="https://rickandmorty-2sblwy9hp-mstfrs.vercel.app/"> Live Website </a> 
 <hr>
 
 ### Built with

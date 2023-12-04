@@ -21,6 +21,8 @@ When you click over the location, you are able to see all or filter the characte
 
 On Characters Page, when you click on one of the character names, you are redirected to the character details page.
 
+Additionally, pagination and skeleton were used in the project.
+
 
 
 ## Project Skeleton

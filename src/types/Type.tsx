@@ -55,14 +55,15 @@ export interface ButtonComponentProps {
 }
 export interface Characters {
   allCharacters: ICharacters[];
+  otherCharacters: ICharacters[];
   loading: boolean;
+
   error: string;
   allLocations: ILocations[];
   filteredCharactersByLocation: ICharacters[];
   selectedCharacter: ICharacters;
-  selectedLocation: string;
 }
-export interface Locations {  
+export interface Locations {
   loading: boolean;
   error: string;
   allLocations: ILocations[];

@@ -1,11 +1,11 @@
 import Header from "../../components/Header";
 import LocationCardList from "../../components/LocationCardList";
-const HomePage = () => {
+const HomePage:React.FC = () => {
   return (
-    <>
+    <div className="container max-h-[90%]">
       <Header />
       <LocationCardList />
-    </>
+    </div>
   );
 };
 

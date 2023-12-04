@@ -1,7 +1,7 @@
 import CharacterDetailCard from '../../components/CharacterDetailCard';
 import Header from '../../components/Header';
 
-const CharacterDetail = () => {
+const CharacterDetail:React.FC = () => {
     
 
   return (

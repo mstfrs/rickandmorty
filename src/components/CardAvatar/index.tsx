@@ -3,7 +3,7 @@ import { CardAvatarProps } from "../../types/Type";
 
 export const CardAvatar: React.FC<CardAvatarProps> = ({ otherCharacter }) => {
   return (
-    <div className="py-4 px-4 w-[24rem] h-[10rem] mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+    <div className=" cursor-pointer py-4 px-4 w-[24rem] h-[10rem] mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
       <img
         className="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0"
         src={otherCharacter.image}

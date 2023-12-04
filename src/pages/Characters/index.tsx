@@ -1,7 +1,7 @@
 import CharacterList from "../../components/CharacterList";
 import Header from "../../components/Header";
 
-const Characters = () => {
+const Characters:React.FC = () => {
   return (
     <>
       <Header />
